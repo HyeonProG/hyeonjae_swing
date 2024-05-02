@@ -1,6 +1,6 @@
-package bubble.test.ex01;
+package bubble.test.ex02;
 
-import java.awt.event.KeyAdapter; 
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
@@ -63,10 +63,23 @@ public class BubbleFrame extends JFrame {
 
 			} // end of keyPressed
 
+			@Override
+			public void keyReleased(KeyEvent e) {
+
+				switch (e.getKeyCode()) {
+				case KeyEvent.VK_LEFT:
+					player.setLeft(false);
+					break;
+				case KeyEvent.VK_RIGHT:
+					player.setRight(false);
+					break;
+				}
+			} // end of keyReleased
+
 		});
 
 	}
-	
+
 	// 코드 테스트
 	public static void main(String[] args) {
 		new BubbleFrame();
