@@ -1,10 +1,12 @@
-package bubble.test.ex07;
+package bubble.test.ex10;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public class Player extends JLabel implements Moveable {
 
+	BubbleFrame mContext;
+	
 	private int x;
 	private int y;
 	private ImageIcon playerR, playerL;
@@ -23,11 +25,14 @@ public class Player extends JLabel implements Moveable {
 	private final int SPEED = 4;
 	private final int JUMPSPEED = 2;
 
-	public Player() {
+	public Player(BubbleFrame mContext) {
+		this.mContext = mContext;
 		initData();
 		setInitLayout();
+		// player 백그라운드 서비스 시작
+		new Thread(new BackgroundPlayerService(this)).start();
 	}
-	
+
 	// enum 타입의 활용
 	PlayerWay playerWay;
 
@@ -48,19 +53,19 @@ public class Player extends JLabel implements Moveable {
 		this.y = y;
 	}
 
-	public ImageIcon getplayerR() {
+	public ImageIcon getPlayerR() {
 		return playerR;
 	}
 
-	public void setplayerR(ImageIcon playerR) {
+	public void setPlayerR(ImageIcon playerR) {
 		this.playerR = playerR;
 	}
 
-	public ImageIcon getplayerL() {
+	public ImageIcon getPlayerL() {
 		return playerL;
 	}
 
-	public void setplayerL(ImageIcon playerL) {
+	public void setPlayerL(ImageIcon playerL) {
 		this.playerL = playerL;
 	}
 
@@ -136,9 +141,9 @@ public class Player extends JLabel implements Moveable {
 
 		leftWallCrash = false;
 		rightWallCrash = false;
-		
-		playerWay = playerWay.RIGHT;
-		
+
+		playerWay = PlayerWay.RIGHT;
+
 	}
 
 	private void setInitLayout() {
@@ -149,7 +154,7 @@ public class Player extends JLabel implements Moveable {
 
 	@Override
 	public void left() {
-		playerWay = playerWay.LEFT;
+		playerWay = PlayerWay.LEFT;
 		left = true;
 		// 왼쪽 방향키 이벤트 발생 시
 		// 이미지를 왼쪽으로 보는 이미지로 세팅
@@ -177,7 +182,7 @@ public class Player extends JLabel implements Moveable {
 
 	@Override
 	public void right() {
-		playerWay = playerWay.RIGHT;
+		playerWay = PlayerWay.RIGHT;
 		right = true;
 		setIcon(playerR);
 
@@ -246,5 +251,25 @@ public class Player extends JLabel implements Moveable {
 		}).start();
 
 	} // end of down
+
+	// 플레이어의 공격
+	public void attack() {
+		// 작업자에게 위임
+		// 람다 표현식 --> 말 그대로 표현식일 뿐, 자바는 타입 추론 가능
+		new Thread(() -> {
+			// run() 메서드 안에 들어오는 식 작성
+			Bubble bubble = new Bubble(mContext);
+			// mContext 를 통해서 (JFrame의 메서드를 호출할 수 있다)
+			mContext.add(bubble);
+			if (playerWay == PlayerWay.LEFT) {
+				// 버블을 왼쪽으로 쏘기
+				bubble.left();
+			} else {
+				// 버블을 오른쪽으로 쏘기
+				bubble.right();
+			}
+		}).start();
+
+	}
 
 }

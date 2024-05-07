@@ -45,19 +45,19 @@ public class Player extends JLabel implements Moveable {
 		this.y = y;
 	}
 
-	public ImageIcon getPlayerR() {
+	public ImageIcon getplayerR() {
 		return playerR;
 	}
 
-	public void setPlayerR(ImageIcon playerR) {
+	public void setplayerR(ImageIcon playerR) {
 		this.playerR = playerR;
 	}
 
-	public ImageIcon getPlayerL() {
+	public ImageIcon getplayerL() {
 		return playerL;
 	}
 
-	public void setPlayerL(ImageIcon playerL) {
+	public void setplayerL(ImageIcon playerL) {
 		this.playerL = playerL;
 	}
 

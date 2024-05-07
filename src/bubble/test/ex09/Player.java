@@ -140,7 +140,7 @@ public class Player extends JLabel implements Moveable {
 		leftWallCrash = false;
 		rightWallCrash = false;
 
-		playerWay = PlayerWay.RIGHT;
+		playerWay = playerWay.RIGHT;
 
 	}
 
@@ -152,7 +152,7 @@ public class Player extends JLabel implements Moveable {
 
 	@Override
 	public void left() {
-		playerWay = PlayerWay.LEFT;
+		playerWay = playerWay.LEFT;
 		left = true;
 		// 왼쪽 방향키 이벤트 발생 시
 		// 이미지를 왼쪽으로 보는 이미지로 세팅
@@ -180,7 +180,7 @@ public class Player extends JLabel implements Moveable {
 
 	@Override
 	public void right() {
-		playerWay = PlayerWay.RIGHT;
+		playerWay = playerWay.RIGHT;
 		right = true;
 		setIcon(playerR);
 
@@ -259,7 +259,7 @@ public class Player extends JLabel implements Moveable {
 			Bubble bubble = new Bubble(mContext);
 			// mContext 를 통해서 (JFrame의 메서드를 호출할 수 있다)
 			mContext.add(bubble);
-			if (playerWay == PlayerWay.LEFT) {
+			if (playerWay == playerWay.LEFT) {
 				// 버블을 왼쪽으로 쏘기
 				bubble.left();
 			} else {

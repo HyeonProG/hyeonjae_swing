@@ -1,6 +1,6 @@
 package bubble.test.ex07;
 
-import javax.swing.ImageIcon;
+import javax.swing.ImageIcon; 
 import javax.swing.JLabel;
 
 public class Bubble extends JLabel implements Moveable {
@@ -32,11 +32,11 @@ public class Bubble extends JLabel implements Moveable {
 	}
 
 	// get, set
-	public Player getPlayer() {
+	public Player getplayer() {
 		return player;
 	}
 
-	public void setPlayer(Player player) {
+	public void setplayer(Player player) {
 		this.player = player;
 	}
 

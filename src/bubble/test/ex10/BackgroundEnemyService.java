@@ -1,4 +1,4 @@
-package bubble.test.ex09;
+package bubble.test.ex10;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
@@ -10,13 +10,13 @@ import javax.imageio.ImageIO;
 /**
  * 현재 메인 쓰레드는 너무 바쁘다 백그라운드에서 계속 player 의 움직임을 관찰할 예정
  */
-public class BackgroundPlayerService implements Runnable {
+public class BackgroundEnemyService implements Runnable {
 
 	private BufferedImage image;
 	private Player player;
 
 	// 생성자 의존 주입 DI
-	public BackgroundPlayerService(Player player) {
+	public BackgroundEnemyService(Player player) {
 		this.player = player;
 
 		try {

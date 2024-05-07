@@ -44,7 +44,7 @@ public class GameFrame2 extends JFrame {
 			if (isVisible == true) {
 				g.drawImage(player1, playerX, playerY, 50, 50, null);
 			}
-			g.drawImage(enemy1, enemyX, enemyY, 50, 50, null);
+			g.drawImage(player1, playerX, playerY, 50, 50, null);
 
 			// Todo : 플레이어, 적군, 그림 그려야 한다.
 			// 쓰레드를 활용할 예정
@@ -60,16 +60,16 @@ public class GameFrame2 extends JFrame {
 				// System.out.println("진행중");
 				if (isMove) {
 					if (direction) {
-						enemyX -= 10;
+						playerX -= 10;
 					} else {
-						enemyX += 10;
+						playerX += 10;
 					}
 					// 방향 바꾸는 개념은 적군 x 좌표값이
-					if (enemyX <= 50) {
+					if (playerX <= 50) {
 						// false -> 오른쪽으로
 						direction = false;
 					}
-					if (enemyX >= 520) {
+					if (playerX >= 520) {
 						// true -> 왼쪽으로
 						direction = true;
 					}
@@ -79,8 +79,8 @@ public class GameFrame2 extends JFrame {
 						e.printStackTrace();
 					}
 
-					if (playerY - enemyY <= 50 && playerX - enemyX <= 50) {
-						if (enemyY - playerY <= 50 && enemyX - playerX <= 50) {
+					if (playerY - playerY <= 50 && playerX - playerX <= 50) {
+						if (playerY - playerY <= 50 && playerX - playerX <= 50) {
 							isVisible = false;
 						}
 					}
@@ -100,7 +100,7 @@ public class GameFrame2 extends JFrame {
 			// 예외가 발생할 수 있는 코드를 작성하는 영역
 			backgroundImage = ImageIO.read(new File("img/backgroundMap.png"));
 			player1 = ImageIO.read(new File("img/playerL.png"));
-			enemy1 = ImageIO.read(new File("img/enemyL.png"));
+			player1 = ImageIO.read(new File("img/playerL.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -157,8 +157,8 @@ public class GameFrame2 extends JFrame {
 					}
 				}
 				// 2. 플레이어가 적군과 만났다면 플레이어 그림을 없애주세요.
-				if (playerY - enemyY <= 50 && playerX - enemyX <= 50) {
-					if (enemyY - playerY <= 50 && enemyX - playerX <= 50) {
+				if (playerY - playerY <= 50 && playerX - playerX <= 50) {
+					if (playerY - playerY <= 50 && playerX - playerX <= 50) {
 						isVisible = false;
 					}
 				}

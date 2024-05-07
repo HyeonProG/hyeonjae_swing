@@ -1,68 +1,34 @@
-package bubble.test.ex07;
+package bubble.components;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-public class Player extends JLabel implements Moveable {
+import bubble.BubbleFrame;
+import bubble.interfaces.Moveable;
+import bubble.service.BackgroundEnemyService;
+import bubble.state.EnemyWay;
 
+public class Enemy extends JLabel implements Moveable {
+
+	BubbleFrame mContext;
+
+	// 살아있는 상태 0, 물방울에 갇힌 상태 1;
+	private int state;
+
+	// 적군의 좌표값
 	private int x;
 	private int y;
-	private ImageIcon playerR, playerL;
+	private ImageIcon enemyR, enemyL;
 
 	// 움직임의 상태
 	private boolean left;
 	private boolean right;
 	private boolean up;
 	private boolean down;
-
+	
 	// 벽에 충돌한 상태
 	private boolean leftWallCrash;
 	private boolean rightWallCrash;
-
-	// 플레이어 속도 상태
-	private final int SPEED = 4;
-	private final int JUMPSPEED = 2;
-
-	public Player() {
-		initData();
-		setInitLayout();
-	}
-	
-	// enum 타입의 활용
-	PlayerWay playerWay;
-
-	// get, set
-	public int getX() {
-		return x;
-	}
-
-	public void setX(int x) {
-		this.x = x;
-	}
-
-	public int getY() {
-		return y;
-	}
-
-	public void setY(int y) {
-		this.y = y;
-	}
-
-	public ImageIcon getplayerR() {
-		return playerR;
-	}
-
-	public void setplayerR(ImageIcon playerR) {
-		this.playerR = playerR;
-	}
-
-	public ImageIcon getplayerL() {
-		return playerL;
-	}
-
-	public void setplayerL(ImageIcon playerL) {
-		this.playerL = playerL;
-	}
 
 	public boolean isLeft() {
 		return left;
@@ -112,48 +78,62 @@ public class Player extends JLabel implements Moveable {
 		this.rightWallCrash = rightWallCrash;
 	}
 
-	public int getSPEED() {
-		return SPEED;
-	}
+	// 적군 속도 상태
+	private final int SPEED = 3;
+	private final int JUMPSPEED = 1;
 
-	public int getJUMPSPEED() {
-		return JUMPSPEED;
+	// enum 타입의 활용 - 적군 방향 상태
+	private EnemyWay enemyWay;
+
+	public Enemy(BubbleFrame mContext) {
+		this.mContext = mContext;
+		initData();
+		setInitLayout();
+		new Thread(new BackgroundEnemyService(this)).start();
+		left();
+	}
+	
+	public int getState() {
+		return state;
+	}
+	
+	public void setState(int state) {
+		this.state = state;
 	}
 
 	private void initData() {
-		playerR = new ImageIcon("img/playerR.png");
-		playerL = new ImageIcon("img/playerL.png");
+		enemyR = new ImageIcon("img/enemyR.png");
+		enemyL = new ImageIcon("img/enemyL.png");
 
-		// 처음 실행 시 초기 값 세팅
-		x = 450;
-		y = 535;
+		state = 0;
 
-		// 플레이어가 가만히 멈춘 상태
+		// 처음 실행 시 적군 위치
+		x = 720;
+		y = 175;
+
+		// 적군 방향 상태
 		left = false;
 		right = false;
 		up = false;
 		down = false;
 
-		leftWallCrash = false;
-		rightWallCrash = false;
-		
-		playerWay = playerWay.RIGHT;
-		
+		enemyWay = EnemyWay.LEFT;
+
 	}
 
 	private void setInitLayout() {
-		setIcon(playerR);
+		setIcon(enemyL);
 		setSize(50, 50);
 		setLocation(x, y);
 	}
 
 	@Override
 	public void left() {
-		playerWay = playerWay.LEFT;
+		enemyWay = EnemyWay.LEFT;
 		left = true;
 		// 왼쪽 방향키 이벤트 발생 시
 		// 이미지를 왼쪽으로 보는 이미지로 세팅
-		setIcon(playerL);
+		setIcon(enemyL);
 
 		// 왼쪽으로 가는 반복문
 		new Thread(new Runnable() {
@@ -177,9 +157,9 @@ public class Player extends JLabel implements Moveable {
 
 	@Override
 	public void right() {
-		playerWay = playerWay.RIGHT;
+		enemyWay = EnemyWay.RIGHT;
 		right = true;
-		setIcon(playerR);
+		setIcon(enemyR);
 
 		new Thread(new Runnable() {
 

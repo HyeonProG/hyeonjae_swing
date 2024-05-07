@@ -72,8 +72,6 @@ public class BubbleFrame extends JFrame {
 				case KeyEvent.VK_UP:
 					player.up();
 					break;
-				default:
-					break;
 				}
 
 			} // end of keyPressed
@@ -89,8 +87,6 @@ public class BubbleFrame extends JFrame {
 				case KeyEvent.VK_RIGHT:
 					// 오른쪽으로 가는 상태 멈춤
 					player.setRight(false);
-					break;
-				default:
 					break;
 				}
 			} // end of keyReleased

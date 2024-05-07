@@ -8,19 +8,19 @@ import javax.swing.JLabel;
 
 public class Minigame3 extends JFrame {
 
-	private JLabel jPlayer;
+	private JLabel jplayer;
 	// 변수는 변하는 수
-	private int jPlayerX = 100;
-	private int jPlayerY = 100;
+	private int jplayerX = 100;
+	private int jplayerY = 100;
 	// 움직임
 	private final int MOVE_DISTANCE = 20;
 	// 창 크기
 	private final int FRAME_WIDTH = 500;
 	private final int FRAME_HEIGHT = 500;
 	// 플레이어
-	private final String PLAYER_NAME = "야스오";
-	private final int PLAYER_WIDTH = 100;
-	private final int PLAYER_HEIGHT = 100;
+	private final String player_NAME = "야스오";
+	private final int player_WIDTH = 100;
+	private final int player_HEIGHT = 100;
 
 	public Minigame3() {
 		initData();
@@ -31,22 +31,22 @@ public class Minigame3 extends JFrame {
 	private void initData() {
 		setSize(FRAME_WIDTH, FRAME_HEIGHT);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		jPlayer = new JLabel(PLAYER_NAME);
-		jPlayer.setSize(PLAYER_WIDTH, PLAYER_HEIGHT);
+		jplayer = new JLabel(player_NAME);
+		jplayer.setSize(player_WIDTH, player_HEIGHT);
 	}
 
 	private void setInitLayout() {
 		// 좌표 기반으로 배치 관리자 변경
 		setLayout(null);
-		add(jPlayer);
-		jPlayer.setLocation(jPlayerX, jPlayerY);
+		add(jplayer);
+		jplayer.setLocation(jplayerX, jplayerY);
 		setVisible(true);
 	}
 
 	private void addEventListener() {
-		// jPlayer 객체한테만 keyListener 동작을 시키고자 한다면
+		// jplayer 객체한테만 keyListener 동작을 시키고자 한다면
 		// 익명 구현 클래스로 keyListener 인터페이스를 재정의할 수 있다.
-		// jPlayer.addKeyListener(this);
+		// jplayer.addKeyListener(this);
 		addKeyListener(new KeyListener() {
 
 			@Override
@@ -61,15 +61,15 @@ public class Minigame3 extends JFrame {
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_UP) {
 					// 변수는 변하는 수이기도 하다.
-					jPlayerY -= MOVE_DISTANCE;
+					jplayerY -= MOVE_DISTANCE;
 				} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-					jPlayerX -= MOVE_DISTANCE;
+					jplayerX -= MOVE_DISTANCE;
 				} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-					jPlayerX += MOVE_DISTANCE;
+					jplayerX += MOVE_DISTANCE;
 				} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-					jPlayerY += MOVE_DISTANCE;
+					jplayerY += MOVE_DISTANCE;
 				}
-				jPlayer.setLocation(jPlayerX, jPlayerY);
+				jplayer.setLocation(jplayerX, jplayerY);
 			}
 		});
 

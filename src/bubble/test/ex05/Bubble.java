@@ -30,11 +30,11 @@ public class Bubble extends JLabel {
 	}
 	
 	// get, set
-	public Player getPlayer() {
+	public Player getplayer() {
 		return player;
 	}
 
-	public void setPlayer(Player player) {
+	public void setplayer(Player player) {
 		this.player = player;
 	}
 

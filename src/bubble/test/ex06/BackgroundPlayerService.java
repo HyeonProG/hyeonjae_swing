@@ -8,7 +8,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 /**
- * 현재 메인 쓰레드는 너무 바쁘다 백그라운드에서 계속 Player 의 움직임을 관찰할 예정
+ * 현재 메인 쓰레드는 너무 바쁘다 백그라운드에서 계속 player 의 움직임을 관찰할 예정
  */
 public class BackgroundPlayerService implements Runnable {
 
@@ -65,7 +65,7 @@ public class BackgroundPlayerService implements Runnable {
 				player.setRightWallCrash(false);
 			}
 
-			// 위 두 조건이 아니면 Player 는 마음대로 움직일 수 있다.
+			// 위 두 조건이 아니면 player 는 마음대로 움직일 수 있다.
 			try {
 				Thread.sleep(10);
 			} catch (InterruptedException e) {

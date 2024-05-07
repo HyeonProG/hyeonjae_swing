@@ -1,4 +1,4 @@
-package bubble.test.ex09;
+package bubble.service;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
@@ -6,6 +6,8 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+
+import bubble.components.Player;
 
 /**
  * 현재 메인 쓰레드는 너무 바쁘다 백그라운드에서 계속 player 의 움직임을 관찰할 예정

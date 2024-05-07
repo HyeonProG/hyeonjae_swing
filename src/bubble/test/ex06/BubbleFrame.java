@@ -18,7 +18,7 @@ public class BubbleFrame extends JFrame {
 		setInitLayout();
 		addEventListener();
 
-		// Player 백그라운드 서비스 시작
+		// player 백그라운드 서비스 시작
 		new Thread(new BackgroundPlayerService(player)).start();
 	}
 
