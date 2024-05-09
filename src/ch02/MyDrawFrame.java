@@ -48,7 +48,6 @@ public class MyDrawFrame extends JFrame {
 			g.drawRect(100, 100, 50, 100);
 			g.drawRect(200, 200, 150, 150);
 			// drawLine(int x1, int y1, int x2, int y2)
-			// (x1, y1) 에서 (x2, y2) 까지 선을 그린다.
 			g.drawLine(250, 300, 300, 300);
 			g.drawOval(100, 150, 200, 300); // 원형
 			g.drawString("반가워", 400, 400); // 글자

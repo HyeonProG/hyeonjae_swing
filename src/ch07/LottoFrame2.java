@@ -34,7 +34,6 @@ public class LottoFrame2 extends JFrame implements ActionListener {
 		Icon icon = new ImageIcon("images/lotto.jpg");
 		background = new JLabel(icon);
 		background.setSize(600, 400);
-		
 		button = new JButton("Game Start");
 		lottoRandomNumber = new LottoRandomNumber();
 	}

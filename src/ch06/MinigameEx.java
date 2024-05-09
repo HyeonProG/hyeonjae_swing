@@ -15,8 +15,8 @@ public class MinigameEx extends JFrame {
 	// 플레이어
 	private int playerX = 80;
 	private int playerY = 180;
-	private final int player_WIDTH = 50;
-	private final int player_HEIGHT = 50;
+	private final int PLAYER_WIDTH = 50;
+	private final int PLAYER_HEIGHT = 50;
 	private final int MOVE_DISTANCE = 10;
 	// 배경
 	private final int BACKGROUND_WIDTH = 1000;
@@ -36,7 +36,7 @@ public class MinigameEx extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// 플레이어
 		player = new JLabel(new ImageIcon("images/playerR.png"));
-		player.setSize(player_WIDTH, player_HEIGHT);
+		player.setSize(PLAYER_WIDTH, PLAYER_HEIGHT);
 		// 배경
 		Icon icon = new ImageIcon("images/backgroundMap.png");
 		background = new JLabel(icon);

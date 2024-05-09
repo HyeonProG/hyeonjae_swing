@@ -51,7 +51,7 @@ public class ColorChangeFrame extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("actionPerformed 메서드 호출()");
-		System.out.println(e.toString());
+		// System.out.println(e.toString());
 		
 
 	}
